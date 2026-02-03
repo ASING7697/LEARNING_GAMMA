@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>yt-dlp downloader</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px auto;
+        max-width: 640px;
+        padding: 0 16px;
+      }
+      label {
+        display: block;
+        margin-top: 16px;
+        font-weight: 600;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+      button {
+        margin-top: 20px;
+        padding: 12px 16px;
+        border: none;
+        border-radius: 6px;
+        background: #4c6ef5;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .flash {
+        margin: 16px 0;
+        padding: 12px;
+        border-radius: 6px;
+        background: #ffe3e3;
+        color: #c92a2a;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>yt-dlp downloader</h1>
+    <p>Paste a video URL and optionally choose a format.</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {{ messages[0] }}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post">
+      <label for="url">Video URL</label>
+      <input id="url" name="url" type="url" placeholder="https://..." required />
+
+      <label for="format">Format (optional)</label>
+      <input
+        id="format"
+        name="format"
+        type="text"
+        placeholder="bestvideo+bestaudio/best"
+      />
+
+      <button type="submit">Download</button>
+    </form>
+  </body>
+</html>
